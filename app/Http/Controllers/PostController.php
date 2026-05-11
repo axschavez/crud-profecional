@@ -2,10 +2,14 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\Post\CreatePostRequest;
+use App\Services\Post\PostService;
 use Illuminate\Http\Request;
 
 class PostController extends Controller
 {
+    public function __construct(protected PostService $service){
+    }
     /**
      * Display a listing of the resource.
      */
@@ -25,9 +29,10 @@ class PostController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
+    public function store(CreatePostRequest $request)
     {
-        //
+        $this->service->create($request->validated());
+        return redirect()->route('posts.index')->with('success', 'Post creado exitosamente.');
     }
 
     /**
