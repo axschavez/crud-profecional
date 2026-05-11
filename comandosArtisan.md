@@ -3,3 +3,4 @@ php artisan make:Request Post/CreatePostRequest
 php artisan make:Request Post/UpdatePostRequest
 php artisan make:controller PostController --resource 
 php artisan make:class App/Services/Post/PostService
+php artisan make:component Layout
